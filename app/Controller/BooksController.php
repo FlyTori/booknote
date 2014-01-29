@@ -49,5 +49,15 @@
 				}
 			}
 		}	
+
+		public function delete($id){
+			if ($this->request->is('get')){
+				throw new MethodNotAllowedException();
+			}
+			if ($this->Book->delete($id)){
+				$this->Session->setFlash('Deleted!');
+				$this->redirect(array('action'=>'index'));
+			}
+		}
 	}
 ?>
