@@ -1,6 +1,7 @@
 <h2><?php echo h($book['Book']['book_name']); ?></h2>
 
 <ul class="list-unstyled">
+	<li><img src="http://placehold.it/150x200"></li>
 	<li><strong>Title: </strong><?php echo h($book['Book']['book_name']) ?></li>
 	<li><strong>Author: </strong><?php echo h($book['Book']['author']) ?></li>
 	<li><strong>Publish Year: </strong><?php echo h($book['Book']['publish_year']) ?></li>
@@ -18,3 +19,45 @@
 	</p>
 </ul>
 
+<h2>Reviews</h2>
+<?php foreach($book['Review'] as $review): ?>
+<div id="review_<?php echo h($review['id']); ?>">
+	<li><strong><?php echo h($review['review_title']) ?></strong></li>
+	<li><strong>Rating: </strong><?php echo h($review['rating']) ?></li>
+	<li><?php echo h($review['comment']) ?></li>
+	<?php echo $this->Html->link('削除', '#', array('class'=>'delete', 'data-comment-id'=>$review['id']));
+	?>
+	<br>
+</div>
+<?php endforeach;  ?>
+
+<h2>Add Review</h2>
+<?php 
+	echo $this->Form->create('Review', array(
+		'action'=>'add',
+		'inputDefaults' => array(
+			'div' => 'form-group',
+			'wrapInput' => false,
+			'class' => 'form-control'
+			),
+		)
+	); 
+?>
+<?php echo $this->Form->input('review_title'); ?>
+<?php echo $this->Form->input('rating'); ?>
+<?php echo $this->Form->input('comment', array('rows'=>5)); ?>
+<?php echo $this->Form->input('Comment.book_id', array('type'=>'hidden', 'value'=>$book['Book']['id'])); ?>
+<?php echo $this->Form->end('book review'); ?>
+
+<script>
+$(function() {
+    $('a.delete').click(function(e) {
+        if (confirm('sure?')) {
+        	$.post('HTML->url(array("controller"=>"comments","action"=>"delete")); ?>/'+$(this).data('comment-id'), {}, function(res) {
+                $('#comment_'+res.id).fadeOut();
+            }, "json");
+        }
+        return false;
+    });
+});
+</script>

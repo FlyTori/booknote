@@ -40,12 +40,12 @@
     </div><!-- End of Container -->
 
     <?php 
-    // show details
+    // show dump messages
     // echo $this->element('sql_dump');
     ?>
     
     <?php 
-    // show error message
+    // show error messages
     echo $this->Session->flash('auth'); 
     ?>
     
