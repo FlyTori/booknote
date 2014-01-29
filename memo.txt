@@ -1,0 +1,9 @@
+
+
+開発記録
+
+Todo
+1. Form Div for bootstrap
+2. Grid Display
+3. User Model, Controller, View
+4. Comment Model, Controller, View

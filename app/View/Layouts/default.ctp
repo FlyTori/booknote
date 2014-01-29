@@ -15,11 +15,10 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
         echo $this->Html->css('bootstrap.min');
-        echo $this->Html->css('bootstrap');
+        // echo $this->Html->css('bootstrap');
     ?>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
 
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
@@ -37,7 +36,6 @@
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
         <footer>
-            <p>Last Update at 2014/01</p>
         </footer>
     </div><!-- End of Container -->
 
