@@ -1,73 +1,61 @@
-<?php
-/**
- *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-?>
 <!DOCTYPE html>
-<html>
-<head>
-	<?php echo $this->Html->charset(); ?>
+<html lang="en">
+  <head>
 	<title>
-		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
 	<?php
 		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('cake.generic');
-
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-	?>
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-</head>
-<body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
+        echo $this->Html->css('bootstrap.min');
+        echo $this->Html->css('bootstrap');
+    ?>
 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <style type="text/css">
+    	body{ padding: 70px 0px; }
+    </style>
+
+  </head>
+
+  <body>
+
+    <?php echo $this->Element('navigation'); ?>
+
+    <div class="container">
 			<?php echo $this->Session->flash(); ?>
-
 			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
-		</div>
-	</div>
-	<?php 
-	// Active DebugKit -> Inactive sql_dump
-	// echo $this->element('sql_dump');
-	?>
+        <footer>
+            <p>Last Update at 2014/01</p>
+        </footer>
+    </div><!-- End of Container -->
 
-	<script>
-	$(function() {
-		$('#flashMessage').fadeOut("slow");
-	}, 2000);
-	</script>
+    <?php 
+    // show details
+    // echo $this->element('sql_dump');
+    ?>
+    
+    <?php 
+    // show error message
+    echo $this->Session->flash('auth'); 
+    ?>
+    
+<script>
+    $(function() {
+        $('#flashMessage').fadeOut("slow");
+    }, 2000);
+</script>
 
-</body>
+  </body>
 </html>
