@@ -1,10 +1,13 @@
 <?php 
 	class BooksController extends AppController{
 
-		// import CakePHP helper
+		// Import CakePHP helper
 		public $helpers = array('Html', 'Form');
 
-		// default CRUD functions
+		// Load session component
+		var $components = array('Session');
+
+		// Default CRUD functions
 		// public $scaffold;
 		
 		public function index(){
@@ -22,10 +25,29 @@
 			$this->set('book',$this->Book->read());
 		}
 
-		// public function view($id = null){
-		// 	$this->Book->id = $id;
-		// 	$this->set('book',$this->Book->read());
-		// }
-	}
+		public function add(){
+			if ($this->request->is('post')){
+				if($this->Book->save($this->request->data)){
+					$this->Session->setFlash('Success');
+					$this->redirect(array('action'=>'index'));
+				} else {
+					$this->Session->setFlash('failed');
+				}
+			}
+		}
 
+		public function edit($id = null){
+			$this->Book->id = $id;
+			if($this->request->is('get')){
+				$this->request->data = $this->Book->read();
+			} else {
+				if ($this->Book->save($this->request->data)){
+					$this->Session->setFlash('Success');
+					$this->redirect(array('action'=>'index'));
+				} else {
+					$this->Session->setFlash('failed');
+				}
+			}
+		}	
+	}
 ?>
