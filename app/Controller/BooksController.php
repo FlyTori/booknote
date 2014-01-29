@@ -16,6 +16,16 @@
 			$this->set('books', $this->Book->find('all', $params));
 			$this->set('title_for_layout', 'BookNote - Cloud Bookself');
 		}
+
+		public function view($id = null){
+			$this->Book->id = $id;
+			$this->set('book',$this->Book->read());
+		}
+
+		// public function view($id = null){
+		// 	$this->Book->id = $id;
+		// 	$this->set('book',$this->Book->read());
+		// }
 	}
 
 ?>

@@ -4,7 +4,11 @@
 	<?php foreach ($books as $book): ?>
 	<li>
 	<?php
-	echo h($book['Book']['book_name'])
+	// Static
+	// echo h($book['Book']['book_name'])
+	// 
+	//echo $this->Html->link($book['Book']['book_name'],'/books/view/'.$book['Book']['id']);
+	echo $this->Html->link($book['Book']['book_name'],'/books/view/'.$book['Book']['id']);
 	?>
 	</li>
 	<?php endforeach ?>
