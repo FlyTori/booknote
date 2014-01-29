@@ -10,7 +10,7 @@
           <div class="navbar-brand">
             <?php 
               echo $this->Html->link('BookNote', array(
-              'controller'=>'companies',
+              'controller'=>'books',
               'action'=>'index',
             ));
              ?>
