@@ -9,5 +9,6 @@
 	<li>Introduce: <?php echo h($book['Book']['discription']) ?></li>
 	<li>Pages: <?php echo h($book['Book']['pages']) ?></li>
 	<li>Rate: <?php echo h($book['Book']['overall_rate']) ?></li>
-	<li>Buy it: <?php echo h($book['Book']['amazon_link']) ?></li>
+	<li><?php echo $this->Html->link('Buy it', h($book['Book']['amazon_link'])); ?></li>
+
 </ul>
