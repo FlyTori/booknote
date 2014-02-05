@@ -2,7 +2,9 @@
 
 	class Book extends AppModel{
 
-		public $hasMany = "Review";
+		public $hasOne = 'Upload';
+
+		public $hasMany = 'Review';
 
 		public $validate = array(
 		'book_name' => array(

@@ -43,7 +43,7 @@
 			} else {
 				if ($this->Book->save($this->request->data)){
 					$this->Session->setFlash('Success');
-					$this->redirect(array('action'=>'index'));
+					$this->redirect(array('controller'=>'books','action'=>'view',$this->data['Review']['book_id']));
 				} else {
 					$this->Session->setFlash('failed');
 				}

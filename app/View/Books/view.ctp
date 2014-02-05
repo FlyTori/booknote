@@ -2,6 +2,14 @@
 
 <ul class="list-unstyled">
 	<li><img src="http://placehold.it/150x200"></li>
+
+	<?php // echo h($upload['Upload']['file_name']?????); ?>
+
+	<button type="button" class="btn btn-default btn-sm">
+
+	<?php echo $this->Html->link('Upload Image', array('controller'=>'uploads','action'=>'add',$book['Book']['id'])); ?>
+
+	</button>
 	<li><strong>Title: </strong><?php echo h($book['Book']['book_name']) ?></li>
 	<li><strong>Author: </strong><?php echo h($book['Book']['author']) ?></li>
 	<li><strong>Publish Year: </strong><?php echo h($book['Book']['publish_year']) ?></li>
