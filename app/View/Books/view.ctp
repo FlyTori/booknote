@@ -22,10 +22,12 @@
 <h2>Reviews</h2>
 <?php foreach($book['Review'] as $review): ?>
 <div id="review_<?php echo h($review['id']); ?>">
-	<li><strong><?php echo h($review['review_title']) ?></strong></li>
-	<li><strong>Rating: </strong><?php echo h($review['rating']) ?></li>
-	<li><?php echo h($review['comment']) ?></li>
-	<?php echo $this->Html->link('削除', '#', array('class'=>'delete', 'data-comment-id'=>$review['id']));
+	<ul class="list-unstyled">
+		<li><h4><?php echo h($review['review_title']) ?></h4></li>
+		<li><strong>Rating: </strong><?php echo h($review['rating']) ?></li>
+		<li><?php echo h($review['comment']) ?></li>
+	</ul>
+	<?php echo $this->Html->link('削除', '#', array('class'=>'delete', 'data-review-id'=>$review['id']));
 	?>
 	<br>
 </div>
@@ -46,18 +48,25 @@
 <?php echo $this->Form->input('review_title'); ?>
 <?php echo $this->Form->input('rating'); ?>
 <?php echo $this->Form->input('comment', array('rows'=>5)); ?>
-<?php echo $this->Form->input('Comment.book_id', array('type'=>'hidden', 'value'=>$book['Book']['id'])); ?>
+<?php echo $this->Form->input('book_id', array('type'=>'hidden', 'value'=>$book['Book']['id'])); ?>
+<?php
+	// echo $this->Form->input('Review.book_id', array('type'=>'hidden', 'value'=>$book['Book']['id'])); 
+	// Review. は省略できます
+?>
 <?php echo $this->Form->end('book review'); ?>
 
 <script>
+
 $(function() {
     $('a.delete').click(function(e) {
         if (confirm('sure?')) {
-        	$.post('HTML->url(array("controller"=>"comments","action"=>"delete")); ?>/'+$(this).data('comment-id'), {}, function(res) {
-                $('#comment_'+res.id).fadeOut();
-            }, "json");
+        	$.post('<?php
+          echo($this->HTML->url(array("controller"=>"reviews","action"=>"delete"))); ?>/'+$(this).data('review-id'), {}, function(res) {
+             $('#review_'+res.id).fadeOut();
+             }, "json");
         }
         return false;
     });
 });
+
 </script>

@@ -17,21 +17,6 @@ class ReviewsController extends AppController{
         }
     }
 
-	// public function edit($id = null){
-	// 	$this->Company->id = $id;
-	// 	if ($this->request->is('get')){
-	// 		$this->request->data = $this->Company->read();
-	// 	} else {
-	// 		if ($this->Company->save($this->request->data)) {
-	// 			$this->Session->setFlash('Success');
-	// 			$this->redirect(array('action'=>'index'));
-	// 		} else {
-	// 			$this->Session->setFlash('failed');
-	// 		}
-	// 	}
-	// }
-
-
     public function delete($id) {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();

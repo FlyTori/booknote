@@ -31,13 +31,46 @@ App::uses('Controller', 'Controller');
  * @package		app.Controller
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
+// class AppController extends Controller {
+
+// 	public $components = array(
+// 		// Active DebugKit plugin
+// 		'DebugKit.Toolbar'
+// 		);
+
+// }
+
+
+
 class AppController extends Controller {
 
 	public $components = array(
-		// Active DebugKit plugin
-		'DebugKit.Toolbar'
-		);
+		// active the debug plugin
+		'DebugKit.Toolbar',
+		
+		// add authentication layer
+		'Auth' => array(
+            'loginRedirect' => array(
+                'controller' => 'books',
+                'action' => 'index'
+            ),
+            'logoutRedirect' => array(
+                'controller' => 'books',
+                'action' => 'index',
+                'home'
+            )
+        )
+
+	);
+
+    public function beforeFilter() {
+    // not require login for all index and view actions, in every controller.
+        $this->Auth->allow('index', 'view', 'add');
+        // bootstrap layout
+        // $this->layout = 'bootstrap';
+    }
 
 }
+
 
 

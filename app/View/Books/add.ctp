@@ -1,6 +1,17 @@
 <h2>Add a book</h2>
+
 <?php 
-	echo $this->Form->create('Book');
+	echo $this->Form->create('Book', array(
+		'action'=>'add',
+		'inputDefaults' => array(
+			'div' => 'form-group',
+			'wrapInput' => false,
+			'class' => 'form-control'
+			),
+		)
+	); 
+	// echo $this->Form->create('Book');
+	// NO bootstrap version
 	echo $this->Form->input('book_name');
 	echo $this->Form->input('author');
 	echo $this->Form->input('publish_year');

@@ -8,6 +8,7 @@
           </button>
 
           <div class="navbar-brand">
+            <span class="glyphicon glyphicon-book"></span>
             <?php 
               echo $this->Html->link('BookNote', array(
               'controller'=>'books',
@@ -21,7 +22,7 @@
           <ul class="nav navbar-nav">
             <li>
               <?php 
-                echo $this->Html->link('all books', array(
+                echo $this->Html->link('All books', array(
                 'controller'=>'books',
                 'action'=>'index',
                 ));
@@ -29,9 +30,25 @@
             </li>
             <li>
               <?php 
-                echo $this->Html->link('add a book', array(
+                echo $this->Html->link('Add a book', array(
                 'controller'=>'books',
                 'action'=>'add',
+                ));
+              ?>
+            </li>
+            <li>
+              <?php 
+                echo $this->Html->link('Register', array(
+                'controller'=>'users',
+                'action'=>'add',
+                ));
+              ?>
+            </li>
+            <li>
+              <?php 
+                echo $this->Html->link('Login', array(
+                'controller'=>'users',
+                'action'=>'login',
                 ));
               ?>
             </li>
